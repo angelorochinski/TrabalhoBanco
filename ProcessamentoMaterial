@@ -1,0 +1,38 @@
+package Materialconstrucao.Processo;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import Materialconstrucao.Registro.Registro;
+
+
+
+public class ProcessamentoMaterial {
+	public static List<Registro>lerArquivoM(String nomeArquivo) throws FileNotFoundException
+	{
+		File arquivo = new File(nomeArquivo);
+		Scanner leitor = new Scanner(new FileInputStream(arquivo));
+		List<Registro> MenuMaterial = new ArrayList<>();
+		leitor.nextLine();
+		
+		while(leitor.hasNext()) {
+			String linha = leitor.nextLine();
+			String[] partes = linha.split(";");
+			Registro material = new Registro();
+		material.setMaterial(partes[0]);
+		material.setPrecoMaterial(Double.parseDouble(partes[1]));
+		MenuMaterial.add(material);
+			
+			
+		}
+		leitor.close();
+		return MenuMaterial;
+}
+
+}
+
+
