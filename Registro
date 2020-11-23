@@ -1,0 +1,39 @@
+package Materialconstrucao.Registro;
+
+public class Registro {
+private String NomeCliente;
+public String getNomeCliente() {
+	return NomeCliente;
+}
+public void setNomeCliente(String nomeCliente) {
+	NomeCliente = nomeCliente;
+}
+public Double getPrecoMaterial() {
+	return PrecoMaterial;
+}
+public void setPrecoMaterial(Double precoMaterial) {
+	PrecoMaterial = precoMaterial;
+}
+public Double getPrecoFerramenta() {
+	return PrecoFerramenta;
+}
+public void setPrecoFerramenta(Double precoFerramenta) {
+	PrecoFerramenta = precoFerramenta;
+}
+public String getFerramenta() {
+	return Ferramenta;
+}
+public void setFerramenta(String ferramenta) {
+	Ferramenta = ferramenta;
+}
+public String getMaterial() {
+	return Material;
+}
+public void setMaterial(String material) {
+	Material = material;
+}
+private Double PrecoMaterial;
+private Double PrecoFerramenta;
+private String Ferramenta;
+private String Material;
+}
