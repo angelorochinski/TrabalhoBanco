@@ -1,0 +1,64 @@
+package Final;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class BancoDados {
+	public static void main(String[] args) throws SQLException {
+	   
+		incluir(null, null, null);
+		listar();
+		
+			
+	}
+		
+	
+
+		static void listar() throws SQLException {
+		String url = "jdbc:sqlite:C:\\_ws\\compras\\DBSERIO.db";
+		Connection con = DriverManager.getConnection(url);
+		//2 comando para criacao 
+		Statement executor = con.createStatement();
+		String sql = "select * from RelatorioVendas;";
+				ResultSet resultado = executor.executeQuery(sql);
+				//3 imprimir
+				
+				while (resultado.next()) {
+					int ID = resultado.getInt("ID");
+					String Nome = resultado.getString("Nome");
+					float total = resultado.getFloat("total");
+					String Email = resultado.getString("Email");
+					System.out.println("ID:" + ID + " Nome:" + Nome + " Preco:" + total + " Email:" + Email);
+				}
+				con.close();
+	}
+		public static void incluir(String nome, Float total, String email) throws SQLException {
+			String url = "jdbc:sqlite:C:\\_ws\\compras\\DBSERIO.db";
+			Connection con = DriverManager.getConnection(url);
+			//2 comando para criacao 
+			String sql = "insert into RelatorioVendas (Nome, total,Email) values (?,?,?);";
+			PreparedStatement executor = con.prepareStatement(sql);
+			executor.setString(1,nome);
+			executor.setFloat(2,total);
+			executor.setString(3,email);
+			int retorno = executor.executeUpdate();
+			System.out.println("Retorno:" + retorno);
+	
+					con.close();
+		}
+
+
+
+
+			
+		}
+	
+	
+
+	
+
+
