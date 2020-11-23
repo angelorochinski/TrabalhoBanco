@@ -1,0 +1,46 @@
+package Final;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import Categoria.MenuMaterial;
+
+public class Impressão {
+
+	public static void imprimir(String nomeMaterial, Float Total, String nomeFerramenta, Double precoMaterial, Double precoFerramenta) throws IOException, SQLException {
+	FileWriter ArquivoDeSaida = new FileWriter("C:\\_ws\\construcao\\Impressao.txt");
+	PrintWriter gravador = new PrintWriter(ArquivoDeSaida);
+	Scanner scan = new Scanner(System.in);
+	String nome = " ";
+	String email = " ";
+	System.out.println("Digite Seu nome:");
+	nome = scan.next();
+	System.out.println("Digite Seu E-mail:");
+	email = scan.next();
+	int cod;
+	
+
+	gravador.println("Material :" + nomeMaterial + precoMaterial);
+	gravador.println("Ferramentas" + nomeFerramenta + precoFerramenta  );
+	gravador.println("Preco Dos Itens  " +  Total);
+	gravador.close();
+	ArquivoDeSaida.close();
+	
+  // BancoDados BD = new BancoDados(); 
+    BancoDados.incluir(nome,Total,email);
+    BancoDados.listar();
+System.out.println("Gostaria de fazer outro pedido?");
+	System.out.println("|1-SIM| |2-NÃO|");
+	cod = scan.nextInt();
+	if (cod == 2) {
+		System.exit(0);
+	}
+	
+	
+	
+
+}
+}
