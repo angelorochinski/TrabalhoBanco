@@ -1,39 +1,57 @@
-package Materialconstrucao.Registro;
+package Final;
 
-public class Registro {
-private String NomeCliente;
-public String getNomeCliente() {
-	return NomeCliente;
-}
-public void setNomeCliente(String nomeCliente) {
-	NomeCliente = nomeCliente;
-}
-public Double getPrecoMaterial() {
-	return PrecoMaterial;
-}
-public void setPrecoMaterial(Double precoMaterial) {
-	PrecoMaterial = precoMaterial;
-}
-public Double getPrecoFerramenta() {
-	return PrecoFerramenta;
-}
-public void setPrecoFerramenta(Double precoFerramenta) {
-	PrecoFerramenta = precoFerramenta;
-}
-public String getFerramenta() {
-	return Ferramenta;
-}
-public void setFerramenta(String ferramenta) {
-	Ferramenta = ferramenta;
-}
-public String getMaterial() {
-	return Material;
-}
-public void setMaterial(String material) {
-	Material = material;
-}
-private Double PrecoMaterial;
-private Double PrecoFerramenta;
-private String Ferramenta;
-private String Material;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+import Materialconstrucao.Registro.Registro;
+
+
+public class Finalizar{
+	public static Registro Processo(List<Registro> escolhas ) throws IOException, SQLException {
+		Scanner leitor = new Scanner(System.in);
+	
+
+			String NomeMaterial = " Nenhum Material escolhido";
+			String NomeFerramenta = " Nenhuma Ferramenta Escolhida";
+			Double PrecoMaterial = 0.0;
+			Double PrecoFerramenta = 0.0;
+			Float Total = (float) 0.0;
+		for ( Registro Registro : escolhas) {
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (Registro.getMaterial() != null) {
+	     	NomeMaterial = Registro.getMaterial();
+	     	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (Registro.getPrecoMaterial() != null) {
+			PrecoMaterial = Registro.getPrecoMaterial();
+			}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (Registro.getFerramenta() != null) {
+			NomeFerramenta = Registro.getFerramenta();
+			}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (Registro.getPrecoFerramenta() != null) {
+				PrecoFerramenta = Registro.getPrecoFerramenta();
+			}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////			
+//////////////////////////////////////////////////////////////////////////////////////////////////////				
+	
+		
+			
+		}
+		Total = (float) (PrecoFerramenta + PrecoMaterial);
+		System.out.println("Material Escolhido:" + NomeMaterial + PrecoMaterial);
+		System.out.println("Ferramenta Escolhida" + NomeFerramenta + PrecoFerramenta  );
+		System.out.println("Preco Dos Itens  " + Total);
+		
+		Impressão.imprimir(NomeMaterial, Total,NomeFerramenta,PrecoMaterial, PrecoFerramenta);
+		
+		
+		return null;
+
+	}
 }
